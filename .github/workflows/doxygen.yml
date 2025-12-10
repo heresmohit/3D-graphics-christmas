@@ -1,0 +1,28 @@
+name: Doxygen Documentation
+
+on:
+  push:
+    branches:
+      - main # Or your default branch like 'master'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Needed to push the generated documentation
+      pages: write    # Needed for GitHub Pages deployment
+      id-token: write # Needed for GitHub Pages deployment
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Deploy Doxygen to GitHub Pages
+        uses: DenverCoder1/doxygen-github-pages-action@v1.4.0 # A reliable, well-maintained action
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # The folder where Doxygen generates the HTML output
+          folder: docs/html # Change this to match your OUTPUT_DIRECTORY/HTML_OUTPUT
+          # Branch to deploy to. 'gh-pages' is classic, but you can use the
+          # main branch 'docs' folder for modern GitHub Pages setup.
+          branch: gh-pages # This will create a 'gh-pages' branch for your docs
