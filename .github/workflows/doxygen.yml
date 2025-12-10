@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Deploy Doxygen to GitHub Pages
-        uses: DenverCoder1/doxygen-github-pages-action@v1.4.0 # A reliable, well-maintained action
+        uses: DenverCoder1/doxygen-github-pages-action@v2.0.0# A reliable, well-maintained action
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           # The folder where Doxygen generates the HTML output
